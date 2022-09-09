@@ -4,6 +4,7 @@
   "scripts": {},
   "dependencies": {},
   "devDependencies": {
+    "chainweb-sdk-core": "*",
     "typescript": "^4.5.3"
   }
 }
