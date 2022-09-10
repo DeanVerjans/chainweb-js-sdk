@@ -4,7 +4,9 @@
   "scripts": {
     "test": "jest"
   },
-  "dependencies": {},
+  "dependencies": {
+    "axios": "0.27.2"
+  },
   "devDependencies": {
     "chainweb-sdk-core": "*",
     "@types/jest": "^29.0.0",
