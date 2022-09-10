@@ -1,0 +1,9 @@
+{
+  "name": "chainweb-sdk-api",
+  "version": "0.0.0",
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {
+    "chainweb-sdk-core": "*"
+  }
+}
