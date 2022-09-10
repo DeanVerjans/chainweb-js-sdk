@@ -47,7 +47,7 @@ export class BlockHeaderEndpoint extends Endpoint {
 
   public async getBlockHeaderBranches<TRequest extends ChainRequest = BlockHeaderRequestParams>(
     args: BlockHeaderBranchesArgs
-  ): Promise<BlockHeader> {
+  ): Promise<BlockHeaderList> {
     const { body = { upper: [], lower: [] }, params, responseFormat, query } = args;
 
     const url: string = this.provider.urlBuilder
@@ -55,7 +55,7 @@ export class BlockHeaderEndpoint extends Endpoint {
       .chainId(params.chainId)
       .build();
 
-    return this.provider.post<BlockHeaderBranchesArgs, BlockHeader>(url, {
+    return this.provider.post<BlockHeaderBranchesArgs, BlockHeaderList>(url, {
       query,
       body,
       responseFormat,

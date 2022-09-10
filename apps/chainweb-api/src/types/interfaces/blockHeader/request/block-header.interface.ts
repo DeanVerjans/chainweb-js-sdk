@@ -17,7 +17,7 @@ export interface BlockHeaderArgs<TRequest extends ChainRequest = ChainRequest> {
 
 export interface BlockHeaderBranchesArgs {
   params: ChainRequest;
-  query: RequestQueryString;
+  query?: RequestQueryString;
   body: RequestBody;
-  responseFormat?: ResponseFormat;
+  responseFormat?: ResponseFormat.JSON | ResponseFormat.BASE64_URL;
 }

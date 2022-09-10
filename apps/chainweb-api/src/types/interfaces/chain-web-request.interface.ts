@@ -8,8 +8,8 @@ export interface RequestBody {
 }
 
 export interface RequestQueryString {
-  minHeight?: number;
-  maxHeight?: number;
+  minheight?: number;
+  maxheight?: number;
   limit?: number;
   next?: string;
 }
