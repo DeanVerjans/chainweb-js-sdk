@@ -3,9 +3,3 @@ export enum ResponseFormat {
   BINARY = 'application/octet-stream',
   BASE64_URL = 'application/json',
 }
-
-export enum HttpMethod {
-  GET = 'get',
-  POST = 'post',
-  PUT = 'put',
-}

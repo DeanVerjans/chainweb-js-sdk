@@ -20,10 +20,10 @@ export class HttpProvider extends BaseProvider {
   }
 
   /**
-   *
-   * @param endpoint
-   * @param query
-   * @param responseFormat
+   * Http GET-request to receive data of the requested node resource
+   * @param {string} endpoint - The endpoint of the node resource
+   * @param {object} query - Query strings that need to be added to the request
+   * @param {ResponseFormat} responseFormat - Response format of the node
    */
   public async get<T extends GetParams, R = unknown>(
     endpoint: string,
@@ -36,14 +36,20 @@ export class HttpProvider extends BaseProvider {
         },
         params: query,
       })
-      .then((d: AxiosResponse<R>) => d.data);
+      .then((res: AxiosResponse<R>) => res.data);
   }
 
+  /**
+   * Http POST-request to receive/mutate data of the requested node resource
+   * @param {string} endpoint - The endpoint of the node resource
+   * @param {object} body - Json body that need to be added to the request
+   * @param {object} query - Query strings that need to be added to the request
+   * @param {ResponseFormat} responseFormat - Response format of the node
+   */
   public async post<T, R = unknown>(
     endpoint: string,
-    { body, responseFormat, query }: SubSet<MutationParams, T>
+    { query, body, responseFormat }: SubSet<MutationParams, T>
   ): Promise<R> {
-    console.log(query);
     return this._instance
       .post(endpoint, body, {
         headers: {
@@ -51,22 +57,27 @@ export class HttpProvider extends BaseProvider {
         },
         params: query,
       })
-      .then((res: AxiosResponse<R>) => {
-        console.log(res);
-        return res.data;
-      });
+      .then((res: AxiosResponse<R>) => res.data);
   }
 
-  public async put<T, R = unknown>(endpoint: string, data?: T): Promise<R> {
+  /**
+   * Http PUT-request to mutate data of the requested node resource
+   * @param {string} endpoint - The endpoint of the node resource
+   * @param {object} body - Json body that need to be added to the request
+   * @param {object} query - Query strings that need to be added to the request
+   * @param {ResponseFormat} responseFormat - Response format of the node
+   */
+  public async put<T, R = unknown>(
+    endpoint: string,
+    { query, body, responseFormat }: SubSet<MutationParams, T>
+  ): Promise<R> {
     return this._instance
-      .post(endpoint, data, {
+      .post(endpoint, body, {
         headers: {
           Accept: ResponseFormat.JSON,
         },
+        params: query,
       })
-      .then((res: AxiosResponse<R>) => {
-        console.log(res);
-        return res.data;
-      });
+      .then((res: AxiosResponse<R>) => res.data);
   }
 }
