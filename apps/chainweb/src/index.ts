@@ -1,3 +1,5 @@
+import { ChainOptions } from 'chainweb-sdk-core';
+
 export class ChainWeb {
-  constructor() {}
+  constructor(options?: ChainOptions) {}
 }

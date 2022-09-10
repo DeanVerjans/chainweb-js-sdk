@@ -2,6 +2,9 @@
 .idea
 .vscode
 
+# Building
+dist
+
 # dependencies
 node_modules
 .pnp

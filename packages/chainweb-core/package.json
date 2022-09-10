@@ -1,0 +1,20 @@
+{
+  "name": "chainweb-sdk-core",
+  "version": "0.0.0",
+  "main": "dist/src/index.js",
+  "node": "dist/src/index.js",
+  "types": "dist/types/src/index.d.ts",
+  "typings": "dist/types/src/index.d.ts",
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "build": "rm -rf dist/* && tsc"
+  },
+  "dependencies": {
+    "axios": "^0.27.2"
+  },
+  "devDependencies": {
+    "typescript": "^4.5.3"
+  }
+}
