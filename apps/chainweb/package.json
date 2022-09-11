@@ -1,7 +1,9 @@
 {
   "name": "chainweb-sdk",
   "version": "0.0.0",
-  "scripts": {},
+  "scripts": {
+    "dev": "ts-node ./src/index.ts"
+  },
   "dependencies": {},
   "devDependencies": {
     "chainweb-sdk-api": "*",
