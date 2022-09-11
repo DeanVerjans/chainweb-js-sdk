@@ -1,5 +1,3 @@
-import alias from '@rollup/plugin-alias';
-
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
@@ -7,20 +5,10 @@ import json from '@rollup/plugin-json';
 import typescript from 'rollup-plugin-typescript2';
 import ttypescript from 'ttypescript';
 
-import path from 'path';
-
 const config = [
   {
     input: 'src/index.ts',
     plugins: [
-      alias({
-        entries: [
-          {
-            find: '@',
-            replacement: `${path.resolve(path.resolve(__dirname, './'), 'src')}`,
-          },
-        ],
-      }),
       typescript({
         typescript: ttypescript,
         useTsconfigDeclarationDir: true,
@@ -34,18 +22,11 @@ const config = [
       sourcemap: true,
       exports: 'auto',
     },
+    external: ['axios'],
   },
   {
     input: 'src/index.ts',
     plugins: [
-      alias({
-        entries: [
-          {
-            find: '@',
-            replacement: `${path.resolve(path.resolve(__dirname, './'), 'src')}`,
-          },
-        ],
-      }),
       typescript({
         typescript: ttypescript,
         useTsconfigDeclarationDir: true,
@@ -63,6 +44,7 @@ const config = [
       sourcemap: true,
       exports: 'auto',
     },
+    external: ['axios'],
   },
 ];
 export default config;
