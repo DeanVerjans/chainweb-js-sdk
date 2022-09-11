@@ -16,6 +16,7 @@
   ],
   "scripts": {
     "build": "turbo run build",
+    "test": "turbo run test",
     "dev": "turbo run dev --parallel",
     "format": "prettier --write \"**/*.{ts,tsx,md,json}\""
   },
