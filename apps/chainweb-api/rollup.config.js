@@ -22,6 +22,7 @@ const config = [
       sourcemap: true,
       exports: 'auto',
     },
+    external: ['chainweb-sdk-core'],
   },
   {
     input: 'src/index.ts',
@@ -43,6 +44,7 @@ const config = [
       sourcemap: true,
       exports: 'auto',
     },
+    external: ['chainweb-sdk-core'],
   },
 ];
 export default config;
