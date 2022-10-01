@@ -2,8 +2,12 @@ import { chainWeb } from '.';
 
 /**
  * @todo check response types
+ * @todo check direct types of responses
  */
 
+/**
+ * Block Header
+ */
 describe('Block Header Namespace', () => {
   test('Should get block headers of chain', async () => {
     const blockHeaders = await chainWeb.api.blockHeader.getBlockHeaders({
@@ -76,5 +80,50 @@ describe('Block Header Namespace', () => {
     });
     expect(blockHeaderBranches.items.length).toBe(1);
     expect(blockHeaderBranches.limit).toBe(1);
+  });
+});
+
+/**
+ * Block Hash
+ */
+describe('Block Hash Namespace', () => {
+  test('Should get block hashes of a chain', async () => {
+    const blockHeaders = await chainWeb.api.blockHash.getBlockHashes({
+      params: {
+        chainId: 0,
+      },
+      query: {
+        limit: 25,
+      },
+    });
+    expect(blockHeaders.items.length).toBe(25);
+    expect(blockHeaders.limit).toBe(25);
+  });
+  test('Should get an empty block hash branches', async () => {
+    const blockHeaderBranches = await chainWeb.api.blockHash.getBlockHashBranches({
+      params: {
+        chainId: 0,
+      },
+      body: {
+        lower: [],
+        upper: [],
+      },
+    });
+    expect(blockHeaderBranches.limit).toBe(0);
+    expect(blockHeaderBranches.items.length).toBe(0);
+  });
+  test('Should get an empty block hash branches', async () => {
+    const blockHeaderBranches = await chainWeb.api.blockHash.getBlockHashBranches({
+      params: {
+        chainId: 0,
+      },
+      body: {
+        lower: ['RClyuyZAacwvPpmLXKbTwrIRXWeUSjiNhJVP2esH8KM'],
+        upper: ['QxGCAz5AY1Y41nh1yWtgqhKhZ9pPiPRagFdIKNqBH74'],
+      },
+    });
+    expect(blockHeaderBranches.items.length).toBe(1);
+    expect(blockHeaderBranches.limit).toBe(1);
+    console.log(blockHeaderBranches);
   });
 });
