@@ -8,4 +8,4 @@ export type Equal<T, U> = (<G>() => G extends T ? true : false) extends <G>() =>
   ? true
   : false;
 
-export type If<T, R, U = never> = T extends true ? R : U;
+export type IfElse<T, R, U = never> = T extends true ? R : U;

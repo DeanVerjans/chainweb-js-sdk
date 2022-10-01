@@ -3,3 +3,4 @@ export * from './chain-web-response.interface';
 
 // Endpoint interfaces
 export * from './blockHeader';
+export * from './blockHash';
