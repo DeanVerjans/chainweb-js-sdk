@@ -1,4 +1,4 @@
-import { HttpProvider } from 'chainweb-sdk-core';
+import { HttpProvider, ResponseFormat } from 'chainweb-sdk-core';
 import {
   BlockHeader,
   BlockHeaderArgs,
@@ -16,7 +16,7 @@ export class BlockHeaderEndpoint extends Endpoint {
   }
 
   public async getBlockHeaders(args: BlockHeaderArgs): Promise<BlockHeaderList> {
-    const { query, params, responseFormat } = args;
+    const { query, params, responseFormat = ResponseFormat.JSON } = args;
 
     const url: string = this.provider.urlBuilder
       .endpoint(RequestEndpoint.GET_BLOCK_HEADERS)
@@ -32,7 +32,7 @@ export class BlockHeaderEndpoint extends Endpoint {
   public async getBlockHeaderByHash(
     args: BlockHeaderArgs<BlockHeaderRequestParams>
   ): Promise<BlockHeader> {
-    const { query, params, responseFormat } = args;
+    const { query, params, responseFormat = ResponseFormat.JSON } = args;
 
     const url: string = this.provider.urlBuilder
       .endpoint(RequestEndpoint.GET_BLOCK_HEADER_BY_BLOCK_HASH, params)
@@ -48,7 +48,12 @@ export class BlockHeaderEndpoint extends Endpoint {
   public async getBlockHeaderBranches<TRequest extends ChainRequest = BlockHeaderRequestParams>(
     args: BlockHeaderBranchesArgs
   ): Promise<BlockHeaderList> {
-    const { body = { upper: [], lower: [] }, params, responseFormat, query } = args;
+    const {
+      body = { upper: [], lower: [] },
+      params,
+      responseFormat = ResponseFormat.JSON,
+      query,
+    } = args;
 
     const url: string = this.provider.urlBuilder
       .endpoint(RequestEndpoint.GET_BLOCK_HEADER_BRANCHES)

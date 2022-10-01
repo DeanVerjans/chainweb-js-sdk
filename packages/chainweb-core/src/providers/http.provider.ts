@@ -32,7 +32,7 @@ export class HttpProvider extends BaseProvider {
     return this._instance
       .get(endpoint, {
         headers: {
-          Accept: responseFormat || ResponseFormat.JSON,
+          Accept: responseFormat || ResponseFormat.ALL,
         },
         params: query,
       })
@@ -53,7 +53,7 @@ export class HttpProvider extends BaseProvider {
     return this._instance
       .post(endpoint, body, {
         headers: {
-          Accept: responseFormat || ResponseFormat.JSON,
+          Accept: responseFormat || ResponseFormat.ALL,
         },
         params: query,
       })
@@ -74,7 +74,7 @@ export class HttpProvider extends BaseProvider {
     return this._instance
       .post(endpoint, body, {
         headers: {
-          Accept: ResponseFormat.JSON,
+          Accept: responseFormat || ResponseFormat.ALL,
         },
         params: query,
       })
